@@ -33,7 +33,41 @@
 
     <!-- Main Logic Container -->
     <div class="w-full max-w-2xl glass-card p-6 md:p-8 mb-8">
-        <p class='text-red-500 font-bold text-center'>서버 에러가 발생했습니다. 잠시 후 다시 시도해주세요.</p>
+        
+<div class="flex flex-col gap-4">
+    <label class="block text-sm font-bold text-gray-700 mb-1">변환할 영어 문구를 입력하세요 (예: hello)</label>
+    <input type="text" id="snsText" value="hello" class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500" oninput="convertFont()">
+</div>
+<div class="receipt mt-8 flex flex-col gap-3" id="fontResults">
+    <!-- Results go here -->
+</div>
+<script>
+const fonts = {
+    'Bold': '𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝘀𝘁𝘂𝘃𝘄𝘅𝘆𝘇',
+    'Italic': '𝘢𝘣𝘤𝘥𝘦𝘧𝘨𝘩𝘪𝘫𝘬𝘭𝘮𝘯𝘰𝘱𝘲𝘳𝘴𝘵𝘶𝘷𝘸𝘹𝘺𝘻',
+    'Script': '𝒶𝒷𝒸𝒹𝑒𝒻𝑔𝒽𝒾𝒿𝓀𝓁𝓂𝓃𝑜𝓅𝓆𝓇𝓈𝓉𝓊𝓋𝓌𝓍𝓎𝓏',
+    'Gothic': '𝖆𝖇𝖈𝖉𝖊𝖋𝖌𝖍𝖎𝖏𝖐𝖑𝖒𝖓𝖔𝖕𝖖𝖗𝖘𝖙𝖚𝖛𝖜𝖝𝖞𝖟',
+    'Double': '𝕒𝕓𝕔𝕕𝕖𝕗𝕘𝕙𝕚𝕛𝕜𝕝𝕞𝕟𝕠𝕡𝕢𝕣𝕤𝕥𝕦𝕧𝕨𝕩𝕪𝕫',
+    'Circles': 'ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩ'
+};
+const normal = 'abcdefghijklmnopqrstuvwxyz';
+
+function convertFont() {
+    let t = document.getElementById('snsText').value.toLowerCase();
+    let resHtml = '<h3 class="text-xl font-extrabold text-center mb-4">변환된 폰트 (터치하여 복사)</h3>';
+    for (let style in fonts) {
+        let converted = '';
+        for (let char of t) {
+            let idx = normal.indexOf(char);
+            converted += idx !== -1 ? [...fonts[style]][idx] : char;
+        }
+        resHtml += `<div onclick="navigator.clipboard.writeText('${converted}'); alert('복사되었습니다!');" class="p-3 bg-gray-50 border border-gray-200 rounded-lg cursor-pointer hover:bg-blue-50 flex justify-between items-center"><span class="text-lg">${converted||'입력해주세요'}</span><i class="fas fa-copy text-gray-400"></i></div>`;
+    }
+    document.getElementById('fontResults').innerHTML = resHtml;
+}
+convertFont();
+</script>
+
     </div>
 
     <!-- Share & Ads -->
