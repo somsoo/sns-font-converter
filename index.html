@@ -16,16 +16,275 @@
     </style>
 </head>
 <body>
-    <div class="ad-slot">구글 애드센스 (상단)</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
     
     <div class="card">
         <h1>스레드 특수기호 폰트 변환기</h1>
         <p>인스타그램과 스레드에서 시선을 끄는 예쁜 특수문자 폰트로 변환해줍니다.</p>
         
-        <div style="padding: 40px 0; border: 1px solid #e5e7eb; border-radius: 10px; margin: 20px 0; background: #f3f4f6;">
-            <!-- UI 로직 들어갈 자리 -->
-            <p style="color: #6b7280; font-weight: bold;">[계산기 / 변환기 UI 영역]</p>
-        </div>
+        <div style="font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Roboto', sans-serif; max-width: 400px; margin: 20px auto; padding: 25px; background-color: #f0f2f5; border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); text-align: center; color: #333; transition: all 0.3s ease;">
+    <h2 style="color: #6a0dad; margin-bottom: 20px; font-size: 1.8em; font-weight: bold;">✨ 스레드 특수기호 폰트 변환기 ✨</h2>
+    <p style="font-size: 0.9em; color: #666; margin-bottom: 25px; line-height: 1.5;">
+        인스타그램과 스레드에서 시선을 사로잡는 예쁜 특수문자 폰트로 텍스트를 변환해보세요!
+    </p>
+
+    <textarea id="inputText" rows="5" placeholder="여기에 텍스트를 입력하세요..." style="width: calc(100% - 20px); padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 10px; font-size: 1.1em; resize: vertical; box-sizing: border-box; outline: none; transition: border-color 0.3s ease, box-shadow 0.3s ease;"></textarea>
+
+    <button id="convertBtn" style="background-color: #6a0dad; color: white; padding: 14px 25px; border: none; border-radius: 10px; font-size: 1.2em; font-weight: bold; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease; width: 100%; box-sizing: border-box;">
+        변환하기 🚀
+    </button>
+
+    <div id="results" style="margin-top: 30px; text-align: left;">
+        <h3 style="color: #6a0dad; margin-bottom: 15px; font-size: 1.5em; border-bottom: 2px solid #eee; padding-bottom: 10px;">변환 결과</h3>
+        <p id="noInputMsg" style="color: #888; text-align: center; font-size: 1em; padding: 10px;">아직 변환된 텍스트가 없어요. 텍스트를 입력하고 변환 버튼을 눌러보세요!</p>
+    </div>
+</div>
+
+<script>
+    const inputTextarea = document.getElementById('inputText');
+    const convertButton = document.getElementById('convertBtn');
+    const resultsDiv = document.getElementById('results');
+    const noInputMsg = document.getElementById('noInputMsg');
+
+    // 다양한 폰트 스타일에 대한 유니코드 매핑 정의
+    // Mathematical Alphanumeric Symbols (U+1D400 – U+1D7FF)
+    const fontMappings = {
+        '볼드 (Bold)': {
+            upperStart: 0x1D400, // 𝐀
+            lowerStart: 0x1D41A, // 𝐚
+            digitStart: 0x1D7CE, // 𝟎
+        },
+        '이탤릭 (Italic)': {
+            upperStart: 0x1D434, // 𝐴
+            lowerStart: 0x1D44E, // 𝑎
+        },
+        '스크립트 (Script)': { // 𝒜, 𝒶
+            upperStart: 0x1D49C,
+            lowerStart: 0x1D4B6,
+            exceptions: { // 미리 정의된 유니코드 문자가 있는 예외 처리
+                'H': 0x210B, // ℋ
+                'I': 0x2110, // ℐ
+                'L': 0x2112, // ℒ
+                'M': 0x2133, // ℳ
+                'R': 0x211B, // ℛ
+            }
+        },
+        '프락투어 (Fraktur)': { // 𝔄, 𝔞
+            upperStart: 0x1D504,
+            lowerStart: 0x1D51E,
+            exceptions: {
+                'C': 0x212C, // ℭ
+                'H': 0x210B, // ℋ (or U+210C for Fraktur H) - using U+210B for consistency
+                'I': 0x2111, // ℑ
+                'R': 0x211C, // ℜ
+                'Z': 0x2128, // ℨ
+            }
+        },
+        '이중선 (Double-Struck)': { // 𝔸, 𝕒
+            upperStart: 0x1D538,
+            lowerStart: 0x1D552,
+            digitStart: 0x1D7D8, // 𝟘
+            exceptions: {
+                'C': 0x2102, // ℂ
+                'H': 0x210D, // ℍ
+                'N': 0x2115, // ℕ
+                'P': 0x2119, // ℙ
+                'Q': 0x211A, // ℚ
+                'R': 0x211D, // ℝ
+                'Z': 0x2124, // ℤ
+            }
+        },
+        '모노스페이스 (Monospace)': { // 𝙰, 𝚊
+            upperStart: 0x1D670,
+            lowerStart: 0x1D68A,
+            digitStart: 0x1D7F0, // 𝟶
+        },
+        '원형 (Circled)': { // Ⓐ, ⓐ, ⓪
+            upperStart: 0x24B6,
+            lowerStart: 0x24D0,
+            digitStart0: 0x24EA, // '0' is ⓪ (U+24EA), '1' is ① (U+24EB) etc.
+        }
+    };
+
+    /**
+     * 입력된 텍스트를 지정된 폰트 스타일로 변환합니다.
+     * @param {string} text - 변환할 원본 텍스트.
+     * @param {string} styleName - 사용할 폰트 스타일의 이름 (fontMappings의 키).
+     * @returns {string} 변환된 텍스트.
+     */
+    function transformText(text, styleName) {
+        let result = '';
+        const map = fontMappings[styleName];
+
+        for (let i = 0; i < text.length; i++) {
+            const char = text[i];
+            const charCode = char.charCodeAt(0);
+
+            let transformedChar = char; // 기본값은 원본 문자
+
+            // 예외 처리 문자가 있는지 확인 (Script, Fraktur, Double-Struck)
+            if (map.exceptions && char in map.exceptions) {
+                transformedChar = String.fromCodePoint(map.exceptions[char]);
+            }
+            // 대문자 A-Z 변환
+            else if (charCode >= 0x41 && charCode <= 0x5A) {
+                if (map.upperStart) {
+                    transformedChar = String.fromCodePoint(charCode - 0x41 + map.upperStart);
+                }
+            }
+            // 소문자 a-z 변환
+            else if (charCode >= 0x61 && charCode <= 0x7A) {
+                if (map.lowerStart) {
+                    transformedChar = String.fromCodePoint(charCode - 0x61 + map.lowerStart);
+                }
+            }
+            // 숫자 0-9 변환
+            else if (charCode >= 0x30 && charCode <= 0x39) {
+                if (styleName === '원형 (Circled)' && map.digitStart0) {
+                    transformedChar = String.fromCodePoint(charCode - 0x30 + map.digitStart0);
+                } else if (map.digitStart) {
+                    transformedChar = String.fromCodePoint(charCode - 0x30 + map.digitStart);
+                }
+            }
+            result += transformedChar;
+        }
+        return result;
+    }
+
+    /**
+     * 변환된 텍스트 결과를 표시하는 카드 UI 요소를 생성합니다.
+     * @param {string} title - 카드의 제목 (폰트 스타일 이름).
+     * @param {string} content - 변환된 텍스트 내용.
+     * @returns {HTMLElement} 생성된 카드 div 요소.
+     */
+    function createResultCard(title, content) {
+        const card = document.createElement('div');
+        card.style.cssText = `
+            background-color: white;
+            padding: 18px 20px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 1px solid #eee;
+        `;
+
+        const cardTitle = document.createElement('h4');
+        cardTitle.textContent = title;
+        cardTitle.style.cssText = `
+            color: #4a4a4a;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        `;
+        const icon = document.createElement('span');
+        icon.textContent = '✨';
+        icon.style.marginRight = '8px';
+        cardTitle.prepend(icon);
+
+        const contentDiv = document.createElement('p');
+        contentDiv.textContent = content;
+        contentDiv.style.cssText = `
+            font-size: 1.1em;
+            line-height: 1.6;
+            word-break: break-all;
+            white-space: pre-wrap; /* 줄 바꿈 유지 */
+            color: #333;
+            background-color: #f9f9f9;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid #f0f0f0;
+            font-family: 'Consolas', 'Monaco', monospace; /* 특수문자 가독성을 위해 모노스페이스 폰트 사용 */
+        `;
+
+        const copyButton = document.createElement('button');
+        copyButton.textContent = '복사하기';
+        copyButton.style.cssText = `
+            background-color: #7d52a2; /* Copy 버튼 색상 */
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9em;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+            float: right;
+        `;
+        copyButton.onmouseover = () => copyButton.style.backgroundColor = '#9e7abf';
+        copyButton.onmouseout = () => copyButton.style.backgroundColor = '#7d52a2';
+        copyButton.onclick = () => {
+            navigator.clipboard.writeText(content).then(() => {
+                const originalText = copyButton.textContent;
+                copyButton.textContent = '복사 완료! 🎉';
+                copyButton.style.backgroundColor = '#4CAF50';
+                setTimeout(() => {
+                    copyButton.textContent = originalText;
+                    copyButton.style.backgroundColor = '#7d52a2';
+                }, 2000);
+            }).catch(err => {
+                alert('텍스트 복사에 실패했습니다: ' + err);
+            });
+        };
+
+        card.appendChild(cardTitle);
+        card.appendChild(contentDiv);
+        card.appendChild(copyButton);
+        const clearfix = document.createElement('div'); // float 해제
+        clearfix.style.clear = 'both';
+        card.appendChild(clearfix);
+
+        return card;
+    }
+
+    // 변환 버튼 클릭 이벤트 리스너
+    convertButton.addEventListener('click', () => {
+        const inputText = inputTextarea.value.trim();
+        // 이전 결과 초기화 및 결과 헤더 다시 추가
+        resultsDiv.innerHTML = '<h3 style="color: #6a0dad; margin-bottom: 15px; font-size: 1.5em; border-bottom: 2px solid #eee; padding-bottom: 10px;">변환 결과</h3>';
+
+        if (inputText.length === 0) {
+            resultsDiv.appendChild(noInputMsg);
+            noInputMsg.style.display = 'block';
+            inputTextarea.style.borderColor = '#ff6b6b'; // 입력 필드 강조
+            inputTextarea.style.boxShadow = '0 0 5px rgba(255, 107, 107, 0.5)';
+            setTimeout(() => {
+                inputTextarea.style.borderColor = '#ddd';
+                inputTextarea.style.boxShadow = 'none';
+            }, 1000);
+            return;
+        } else {
+            noInputMsg.style.display = 'none';
+        }
+
+        // 각 폰트 스타일별로 변환하여 결과 카드 생성
+        for (const styleName in fontMappings) {
+            const transformed = transformText(inputText, styleName);
+            resultsDiv.appendChild(createResultCard(styleName, transformed));
+        }
+    });
+
+    // 입력 필드 및 버튼 시각적 피드백
+    inputTextarea.onfocus = () => {
+        inputTextarea.style.borderColor = '#6a0dad';
+        inputTextarea.style.boxShadow = '0 0 5px rgba(106, 13, 173, 0.3)';
+    };
+    inputTextarea.onblur = () => {
+        inputTextarea.style.borderColor = '#ddd';
+        inputTextarea.style.boxShadow = 'none';
+    };
+    convertButton.onmouseover = () => convertButton.style.backgroundColor = '#8e44ad';
+    convertButton.onmouseout = () => convertButton.style.backgroundColor = '#6a0dad';
+    convertButton.onmousedown = () => convertButton.style.transform = 'scale(0.98)';
+    convertButton.onmouseup = () => convertButton.style.transform = 'scale(1)';
+
+    // 초기 상태: '아직 변환된 텍스트가 없어요.' 메시지 표시
+    noInputMsg.style.display = 'block';
+</script>
 
         <button class="btn-share" onclick="shareApp()">
             앱 공유하기 (Web Share API)
@@ -33,7 +292,9 @@
     </div>
 
     <div class="coupang-banner">쿠팡 파트너스 맞춤형 기획전 배너</div>
-    <div class="ad-slot">구글 애드센스 (하단)</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
 
     <!-- JSON-LD 구조화 데이터 -->
     <script type="application/ld+json">
