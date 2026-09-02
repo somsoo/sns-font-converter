@@ -4,98 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>스레드 특수기호 폰트 변환기</title>
-    <meta name="description" content="인스타그램과 스레드에서 시선을 끄는 예쁜 특수문자 폰트로 변환해줍니다.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-        body { font-family: 'Pretendard', sans-serif; background-color: #f3f4f6; color: #1f2937; }
-        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 1rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid rgba(255,255,255,0.2); }
-        .receipt { background: #fff; border: 1px dashed #d1d5db; border-radius: 0.5rem; padding: 1.5rem; position: relative; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-        .receipt::before, .receipt::after { content: ''; position: absolute; top: -10px; width: 20px; height: 20px; background: #f3f4f6; border-radius: 50%; }
-        .receipt::before { left: -10px; } .receipt::after { right: -10px; }
-        .btn-primary { background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; transition: all 0.2s; }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
+        body { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); min-height: 100vh; font-family: 'Pretendard', sans-serif; }
+        .glass-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border-radius: 20px; box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); border: 1px solid rgba(255, 255, 255, 0.18); }
+        .receipt { background: #fff; padding: 20px; border-radius: 10px; border: 1px dashed #ccc; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center py-10 px-4">
-    <!-- Header -->
-    <div class="w-full max-w-2xl text-center mb-8">
-        <h1 class="text-3xl font-extrabold text-gray-900 mb-3 tracking-tight">스레드 특수기호 폰트 변환기</h1>
-        <p class="text-gray-500 font-medium">인스타그램과 스레드에서 시선을 끄는 예쁜 특수문자 폰트로 변환해줍니다.</p>
-    </div>
-
-    <!-- Top AdSense -->
-    <div class="w-full max-w-2xl mb-8 bg-white rounded-lg overflow-hidden shadow-sm flex items-center justify-center min-h-[100px]">
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-
-    <!-- Main Logic Container -->
-    <div class="w-full max-w-2xl glass-card p-6 md:p-8 mb-8">
+<body class="flex flex-col items-center justify-center p-4">
+    <div class="glass-card w-full max-w-md p-8 mb-6">
+        <h1 class="text-3xl font-extrabold text-center text-gray-800 mb-2">스레드 특수기호 폰트 변환기</h1>
+        <p class="text-center text-gray-600 mb-8">인스타그램과 스레드에서 시선을 끄는 예쁜 특수문자 폰트로 변환해줍니다.</p>
         
-<div class="flex flex-col gap-4">
-    <label class="block text-sm font-bold text-gray-700 mb-1">변환할 영어 문구를 입력하세요 (예: hello)</label>
-    <input type="text" id="snsText" value="hello" class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500" oninput="convertFont()">
-</div>
-<div class="receipt mt-8 flex flex-col gap-3" id="fontResults">
-    <!-- Results go here -->
-</div>
-<script>
-const fonts = {
-    'Bold': '𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝘀𝘁𝘂𝘃𝘄𝘅𝘆𝘇',
-    'Italic': '𝘢𝘣𝘤𝘥𝘦𝘧𝘨𝘩𝘪𝘫𝘬𝘭𝘮𝘯𝘰𝘱𝘲𝘳𝘴𝘵𝘶𝘷𝘸𝘹𝘺𝘻',
-    'Script': '𝒶𝒷𝒸𝒹𝑒𝒻𝑔𝒽𝒾𝒿𝓀𝓁𝓂𝓃𝑜𝓅𝓆𝓇𝓈𝓉𝓊𝓋𝓌𝓍𝓎𝓏',
-    'Gothic': '𝖆𝖇𝖈𝖉𝖊𝖋𝖌𝖍𝖎𝖏𝖐𝖑𝖒𝖓𝖔𝖕𝖖𝖗𝖘𝖙𝖚𝖛𝖜𝖝𝖞𝖟',
-    'Double': '𝕒𝕓𝕔𝕕𝕖𝕗𝕘𝕙𝕚𝕛𝕜𝕝𝕞𝕟𝕠𝕡𝕢𝕣𝕤𝕥𝕦𝕧𝕨𝕩𝕪𝕫',
-    'Circles': 'ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩ'
-};
-const normal = 'abcdefghijklmnopqrstuvwxyz';
-
-function convertFont() {
-    let t = document.getElementById('snsText').value.toLowerCase();
-    let resHtml = '<h3 class="text-xl font-extrabold text-center mb-4">변환된 폰트 (터치하여 복사)</h3>';
-    for (let style in fonts) {
-        let converted = '';
-        for (let char of t) {
-            let idx = normal.indexOf(char);
-            converted += idx !== -1 ? [...fonts[style]][idx] : char;
-        }
-        resHtml += `<div onclick="navigator.clipboard.writeText('${converted}'); alert('복사되었습니다!');" class="p-3 bg-gray-50 border border-gray-200 rounded-lg cursor-pointer hover:bg-blue-50 flex justify-between items-center"><span class="text-lg">${converted||'입력해주세요'}</span><i class="fas fa-copy text-gray-400"></i></div>`;
-    }
-    document.getElementById('fontResults').innerHTML = resHtml;
-}
-convertFont();
-</script>
-
+        <!-- LOGIC START -->
+        <p class='text-red-500 font-bold text-center'>허용된 모든 모델 한도 초과. 잠시 후 다시 시도해주세요.</p>
+        <!-- LOGIC END -->
+        
     </div>
-
-    <!-- Share & Ads -->
-    <div class="w-full max-w-2xl flex flex-col gap-4 mb-10">
-        <button onclick="shareApp()" class="w-full bg-[#fee500] text-[#191919] font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-[#f4dc00] transition shadow-sm">
-            <i class="fas fa-share-nodes"></i> 카카오톡 및 SNS 공유하기
-        </button>
-        <a href="#" class="w-full bg-[#ff3131] text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-[#e62c2c] transition shadow-sm">
-            <i class="fas fa-shopping-bag"></i> 쿠팡 특별 기획전 바로가기
-        </a>
-    </div>
-
-    <!-- Bottom AdSense -->
-    <div class="w-full max-w-2xl bg-white rounded-lg overflow-hidden shadow-sm flex items-center justify-center min-h-[100px]">
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    
+    <!-- Google AdSense -->
+    <div class="w-full max-w-md bg-white/50 rounded-lg p-2 text-center text-xs text-gray-500 mb-6">
+        <span>광고</span>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
-
-    <script>
-        function shareApp() {
-            if (navigator.share) {
-                navigator.share({ title: '스레드 특수기호 폰트 변환기', text: '인스타그램과 스레드에서 시선을 끄는 예쁜 특수문자 폰트로 변환해줍니다.', url: window.location.href });
-            } else {
-                navigator.clipboard.writeText(window.location.href);
-                alert("링크가 복사되었습니다!");
-            }
-        }
-    </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+    
+    <!-- Web Share API Button -->
+    <button onclick="if(navigator.share) navigator.share({title: '스레드 특수기호 폰트 변환기', url: window.location.href})" class="w-full max-w-md bg-gray-800 text-white font-bold py-4 rounded-full shadow-lg hover:bg-gray-700 transition flex justify-center items-center gap-2">
+        공유하기
+    </button>
 </body>
 </html>
