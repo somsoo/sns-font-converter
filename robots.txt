@@ -1,1 +1,4 @@
-User-agent: *\nAllow: /\nSitemap: https://somsoo.github.io/sns-font-converter/sitemap.xml
+User-agent: *
+Allow: /
+
+Sitemap: https://sns-font-converter.enjoy-onepage.com/sitemap.xml
