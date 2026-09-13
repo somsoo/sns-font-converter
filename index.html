@@ -1,17 +1,4 @@
 ﻿<!DOCTYPE html>
-
-    <!-- 상단 슬림 띠배너 (헤더 직하단: 50~90px 반응형) -->
-    <div class="manual-ad-box ad-top-banner" style="width: 100%; max-width: 960px; margin: 12px auto 20px; overflow: hidden; text-align: center; min-height: 50px; max-height: 90px;">
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:100%;height:60px;"
-             data-ad-client="ca-pub-2228289204702106"
-             data-ad-slot="3824727725"
-             data-ad-format="horizontal"
-             data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -140,6 +127,17 @@
   <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sns-font-converter.enjoy-onepage.com/sitemap.xml" />
 </head>
 <body class="flex flex-col items-center justify-start p-4 md:p-8">
+    <!-- 상단 슬림 띠배너 (헤더 직하단: 50~90px 반응형) -->
+    <div class="manual-ad-box ad-top-banner" style="width: 100%; max-width: 960px; margin: 12px auto 20px; overflow: hidden; text-align: center; min-height: 50px; max-height: 90px;">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:100%;height:60px;"
+             data-ad-client="ca-pub-2228289204702106"
+             data-ad-slot="3824727725"
+             data-ad-format="horizontal"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
     <!-- 메인 컨테이너 -->
     <div class="glass-card w-full max-w-3xl overflow-hidden mb-6">
         <!-- 상단 헤더 부분 -->
@@ -261,7 +259,7 @@
         "Gothic Bold": { upper: "𝕬𝕭𝕮𝕯𝕰𝕱𝕲𝕳𝕴𝕵𝕶𝕷𝕸𝕹𝕺𝕻𝕼𝕽𝕾𝕿𝖀𝖁𝖂𝖃𝖄𝖅", lower: "𝖆𝖇𝖈𝖉𝖊𝖋𝖌𝖍𝖎𝖏𝖐𝖑𝖒𝖓𝖔𝖕𝖖𝖗𝖘𝖙𝖚𝖛𝖜𝖝𝖞𝖟", num: "0123456789" },
         "Circled / Bubble": { upper: "ⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏ", lower: "ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩ", num: "⓪①②③④⑤⑥⑦⑧⑨" },
         "Squared (Negative)": { upper: "🅰🅱🅲🅳🅴🅵🅶🅷🅸🅹🅺🅻🅼🅽🅾🅿🆀🆁🆂🆃🆄🆅🆆🆇🆈🆉", lower: "🅰🅱🅲🅳🅴🅵🅶🅷🅸🅹🅺🅻🅼🅽🅾🅿🆀🆁🆂🆃🆄🆅🆆🆇🆈🆉", num: "0123456789" },
-        "Monospace": { upper: "𝙰𝙱𝙲𝙳𝙴𝙵𝙶𝙷𝙸𝙹𝙺𝙻𝙼𝙽𝙾𝙿𝚀𝚁𝚂𝚃𝚄𝚅𝚆𝚇𝚈𝚉", lower: "𝚊𝚋𝚌𝚍𝚎𝚏𝚐𝚑𝚒𝚓𝚔𝚕𝚖𝚗𝚘𝚙𝚚𝚛𝚜𝚝𝚞𝚠𝚡𝚢𝚣", num: "𝟶𝟷𝟸𝟹𝟺𝟻𝟼𝟽𝟾𝟿" }
+        "Monospace": { upper: "𝙰𝙱𝙲𝙳𝙴𝙵𝙶𝙷𝙸𝙹𝙺𝙻𝙼𝙽𝙾𝙿𝚀𝚁𝚂𝚃𝚄𝚅𝚆𝚇𝚈𝚉", lower: "𝚊𝚋𝚌𝚍𝚎𝚏𝚐𝚑𝚒𝚓𝚔𝚕𝚖𝚗𝚘𝚙𝚚𝚛𝚜𝚝𝚞𝚟𝚠𝚡𝚢𝚣", num: "𝟶𝟷𝟸𝟹𝟺𝟻𝟼𝟽𝟾𝟿" }
       };
 
       const normalUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -358,15 +356,47 @@
         totalStyles.innerText = `${styleCount} ITEMS`;
       }
 
+      function showToast(msg, isSuccess = true) {
+        toast.innerHTML = (isSuccess ? '<span class="text-emerald-400">✓</span> ' : '<span class="text-rose-400">✕</span> ') + msg;
+        toast.classList.remove('translate-y-10', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+        setTimeout(() => {
+          toast.classList.remove('translate-y-0', 'opacity-100');
+          toast.classList.add('translate-y-10', 'opacity-0');
+        }, 2000);
+      }
+
       function copyToClipboard(text) {
-        navigator.clipboard.writeText(text).then(() => {
-          toast.classList.remove('translate-y-10', 'opacity-0');
-          toast.classList.add('translate-y-0', 'opacity-100');
-          setTimeout(() => {
-            toast.classList.remove('translate-y-0', 'opacity-100');
-            toast.classList.add('translate-y-10', 'opacity-0');
-          }, 2000);
-        });
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => {
+            showToast('복사되었습니다! 인스타그램/스레드에 붙여넣으세요.', true);
+          }).catch(() => {
+            fallbackCopy(text);
+          });
+        } else {
+          fallbackCopy(text);
+        }
+      }
+
+      function fallbackCopy(text) {
+        try {
+          const textArea = document.createElement('textarea');
+          textArea.value = text;
+          textArea.style.position = 'fixed';
+          textArea.style.left = '-9999px';
+          document.body.appendChild(textArea);
+          textArea.focus();
+          textArea.select();
+          const successful = document.execCommand('copy');
+          document.body.removeChild(textArea);
+          if (successful) {
+            showToast('복사되었습니다! 인스타그램/스레드에 붙여넣으세요.', true);
+          } else {
+            showToast('복사에 실패했습니다. 수동으로 복사해주세요.', false);
+          }
+        } catch (err) {
+          showToast('복사에 실패했습니다.', false);
+        }
       }
     </script>
 
