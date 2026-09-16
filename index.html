@@ -2,6 +2,11 @@
 
 <html lang="ko">
 <head>
+    <!-- Performance Optimization: Resource Preconnect -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="index, follow" name="robots"/>
@@ -152,6 +157,17 @@
         .barcode {
             background-image: repeating-linear-gradient(90deg, #18181b, #18181b 2px, transparent 2px, transparent 6px, #18181b 6px, #18181b 10px, transparent 10px, transparent 12px);
         }
+    
+        /* U3 Accessibility: Global Keyboard Focus Ring Standard */
+        :focus-visible {
+            outline: 2px solid #3b82f6 !important;
+            outline-offset: 2px !important;
+        }
+        input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible {
+            outline: 2px solid #2563eb !important;
+            outline-offset: 1px !important;
+        }
+    
     </style>
 <link href="https://sns-font-converter.enjoy-onepage.com/rss.xml" rel="alternate" title="인스타·스레드 글씨체 변환기 | 예쁜 영문 폰트·특수문자 바이오 생성기 RSS Feed" type="application/rss+xml"/>
 <link href="https://sns-font-converter.enjoy-onepage.com/sitemap.xml" rel="sitemap" title="Sitemap" type="application/xml"/>
