@@ -1,46 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>인스타·스레드 글씨체 변환기 | 예쁜 영문 폰트·특수문자 바이오 생성기</title>
-    <link>https://sns-font-converter.enjoy-onepage.com/</link>
-    <description>인스타·스레드 글씨체 변환기 | 예쁜 영문 폰트·특수문자 바이오 생성기 실시간 온라인 도구 및 팩트 기반 전문 칼럼 피드</description>
-    <language>ko-KR</language>
-    <lastBuildDate>Sat, 12 Sep 2026 03:00:00 +0900</lastBuildDate>
-    <atom:link href="https://sns-font-converter.enjoy-onepage.com/rss.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>인스타·스레드 글씨체 변환기 | 예쁜 영문 폰트·특수문자 바이오 생성기</title>
-      <link>https://sns-font-converter.enjoy-onepage.com/</link>
-      <guid isPermaLink="true">https://sns-font-converter.enjoy-onepage.com/</guid>
-      <description>인스타·스레드 글씨체 변환기 | 예쁜 영문 폰트·특수문자 바이오 생성기 실시간 온라인 무료 도구 및 시뮬레이터</description>
-      <pubDate>Sat, 12 Sep 2026 00:00:00 +0900</pubDate>
-    </item>
-    <item>
-      <title>인스타·스레드 글씨체 변환기 | 예쁜 영문 폰트·특수문자 바이오 생성기 서비스 소개 및 산출 공식 안내</title>
-      <link>https://sns-font-converter.enjoy-onepage.com/about.html</link>
-      <guid isPermaLink="true">https://sns-font-converter.enjoy-onepage.com/about.html</guid>
-      <description>인스타·스레드 글씨체 변환기 | 예쁜 영문 폰트·특수문자 바이오 생성기의 데이터 처리 원칙, 공식 산출 로직 및 검증 기준입니다.</description>
-      <pubDate>Sat, 12 Sep 2026 01:00:00 +0900</pubDate>
-    </item>
-    <item>
-      <title>인스타·스레드 글씨체 변환기 | 예쁜 영문 폰트·특수문자 바이오 생성기 개인정보처리방침</title>
-      <link>https://sns-font-converter.enjoy-onepage.com/privacy.html</link>
-      <guid isPermaLink="true">https://sns-font-converter.enjoy-onepage.com/privacy.html</guid>
-      <description>인스타·스레드 글씨체 변환기 | 예쁜 영문 폰트·특수문자 바이오 생성기의 개인정보 보호 및 100% 브라우저 메모리 로컬 연산 보안 정책입니다.</description>
-      <pubDate>Sat, 12 Sep 2026 01:10:00 +0900</pubDate>
-    </item>
-    <item>
-      <title>인스타그램 바이오 특수 폰트 변환 원리와 유니코드 영숫자 기호 가이드 | 인스타·스레드 글씨체 변환기 | 예쁜 영문 폰트·특수문자 바이오 생성기</title>
-      <link>https://sns-font-converter.enjoy-onepage.com/guides/guide1.html</link>
-      <guid isPermaLink="true">https://sns-font-converter.enjoy-onepage.com/guides/guide1.html</guid>
-      <description>별도 앱 설치 없이 인스타그램 소개글(Bio), 아이디, 스토리에 적용되는 필기체·고딕·볼드 유니코드 변환입니다.</description>
-      <pubDate>Sat, 12 Sep 2026 02:00:00 +0900</pubDate>
-    </item>
-    <item>
-      <title>인스타그램 검색 최적화(SEO)와 특수 폰트 사용 시 주의사항 | 인스타·스레드 글씨체 변환기 | 예쁜 영문 폰트·특수문자 바이오 생성기</title>
-      <link>https://sns-font-converter.enjoy-onepage.com/guides/guide2.html</link>
-      <guid isPermaLink="true">https://sns-font-converter.enjoy-onepage.com/guides/guide2.html</guid>
-      <description>이름 필드에 특수 폰트를 남용하면 인스타 검색창에서 계정이 검색되지 않는 검색 배제 페널티 주의법입니다.</description>
-      <pubDate>Sat, 12 Sep 2026 02:15:00 +0900</pubDate>
-    </item>
-  </channel>
+<channel>
+  <title>SNS 글씨체 변환기 | 예쁜 영문 폰트·특수문자 프로필 꾸미기</title>
+  <link>https://sns-font-converter.enjoy-onepage.com/</link>
+  <description>영문과 숫자를 굵은 글씨·필기체·겹선 글씨·동그라미 글씨 등 15가지 유니코드 특수 글씨로 바꿔 바로 복사합니다. 한글은 그대로, 입력한 글은 저장하지 않습니다. 무료.</description>
+  <language>ko-kr</language>
+  <atom:link href="https://sns-font-converter.enjoy-onepage.com/rss.xml" rel="self" type="application/rss+xml" />
+  <lastBuildDate>Wed, 30 Sep 2026 09:00:00 GMT</lastBuildDate>
+  <item>
+    <title>이용약관 | SNS 글씨체 변환기</title>
+    <link>https://sns-font-converter.enjoy-onepage.com/terms.html</link>
+    <guid>https://sns-font-converter.enjoy-onepage.com/terms.html</guid>
+    <description>변환된 글은 유니코드 문자이며 보는 기기에 따라 다르게 보일 수 있습니다.</description>
+    <pubDate>Wed, 30 Sep 2026 09:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>개인정보처리방침 | SNS 글씨체 변환기</title>
+    <link>https://sns-font-converter.enjoy-onepage.com/privacy.html</link>
+    <guid>https://sns-font-converter.enjoy-onepage.com/privacy.html</guid>
+    <description>입력한 글은 저장하지도 보내지도 않습니다.</description>
+    <pubDate>Wed, 30 Sep 2026 09:00:00 GMT</pubDate>
+  </item>
+</channel>
 </rss>
